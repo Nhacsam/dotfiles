@@ -1,5 +1,19 @@
 [alias]
 
+	# Sortcut	
+	st  = status
+	co  = checkout
+	pur = pull --rebase
+	ci  = commit
+	cm  = commit -m
+	rc  = rebase --continue
+	lg  = log -M --decorate --graph
+	br  = branch
+	sth = stash
+	fu  = fetch upstream
+	cobra = !"git fetch upstream; git co upstream/develop; git co -b "
+	pr = pull-request
+
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
@@ -16,7 +30,7 @@
 	p = !"git pull; git submodule foreach git pull origin master"
 
 	# Clone a repository including all submodules
-	c = clone --recursive
+	clo = clone --recursive
 
 	# Commit all changes
 	ca = !git add -A && git commit -av
