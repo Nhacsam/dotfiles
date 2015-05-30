@@ -78,6 +78,7 @@ brew cask install iterm2
 brew install zsh
 # Install oh my Zsh. It's recommanded but I don't want to force you
 # curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
+git clone git@github.com:rupa/z.git ~/z-bin
 
 
 # install outdated versions from the cellar.
