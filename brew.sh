@@ -73,6 +73,12 @@ brew install tree
 brew install webkit2png
 brew install zopfli
 
+# Improve terminal
+brew cask install iterm2
+brew install zsh
+# Install oh my Zsh. It's recommanded but I don't want to force you
+# curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
+
 
 # install outdated versions from the cellar.
 brew cleanup
