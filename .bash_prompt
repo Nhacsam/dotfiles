@@ -65,7 +65,7 @@ prompt_git() {
 			git rev-parse --short HEAD 2> /dev/null || \
 			echo '(unknown)')";
 
-		echo -n "${branchName}";
+		echo -n " <${branchName}>";
 	else
 		return;
 	fi;
@@ -127,8 +127,8 @@ PS1+="\[${white}\]@";
 PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\]:";
 PS1+="\[${green}\]\$(current_dir)"; # working directory
-PS1+="\[${white}\] on\[${violet}\] $(prompt_git)"; # Git branch details
-PS1+="\[${blue}\]$(prompt_git_status)"; # Git status
+PS1+="\[${violet}\]\$(prompt_git)"; # Git branch details
+PS1+="\[${blue}\]\$(prompt_git_status)"; # Git status
 PS1+="\[${white}\] \$ \[${reset}\]"; # $ (and reset color)
 export PS1;
 
