@@ -9,9 +9,8 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color';
 fi;
 
-prompt_git() {
+prompt_git_status() {
 	local s='';
-	local branchName='';
 
 	# Check if the current directory is in a Git repository.
 	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
@@ -44,6 +43,21 @@ prompt_git() {
 
 		fi;
 
+		[ -n "${s}" ] && s=" [${s}]";
+
+		echo -n "${s}";
+	else
+		return;
+	fi;
+}
+
+
+prompt_git() {
+	local branchName='';
+
+	# Check if the current directory is in a Git repository.
+	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
+
 		# Get the short symbolic ref.
 		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
 		# Otherwise, just give up.
@@ -51,12 +65,14 @@ prompt_git() {
 			git rev-parse --short HEAD 2> /dev/null || \
 			echo '(unknown)')";
 
-		[ -n "${s}" ] && s=" [${s}]";
-
-		echo -e "${1}${branchName}${blue}${s}";
+		echo -n "${branchName}";
 	else
 		return;
 	fi;
+}
+
+current_dir() {
+	echo -n  $(basename `pwd`) ;
 }
 
 if tput setaf 1 &> /dev/null; then
@@ -105,15 +121,15 @@ fi;
 
 # Set the terminal title to the current working directory.
 PS1="\[\033]0;\w\007\]";
-PS1+="\[${bold}\]\n"; # newline
+PS1+="\[${bold}\]"; # newline
 PS1+="\[${userStyle}\]\u"; # username
-PS1+="\[${white}\] at ";
+PS1+="\[${white}\]@";
 PS1+="\[${hostStyle}\]\h"; # host
-PS1+="\[${white}\] in ";
-PS1+="\[${green}\]\w"; # working directory
-PS1+="\$(prompt_git \"${white} on ${violet}\")"; # Git repository details
-PS1+="\n";
-PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
+PS1+="\[${white}\]:";
+PS1+="\[${green}\]\$(current_dir)"; # working directory
+PS1+="\[${white}\] on\[${violet}\] $(prompt_git)"; # Git branch details
+PS1+="\[${blue}\]$(prompt_git_status)"; # Git status
+PS1+="\[${white}\] \$ \[${reset}\]"; # $ (and reset color)
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
