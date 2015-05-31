@@ -36,3 +36,6 @@
 ehthumbs.db
 Thumbs.db
 Desktop.ini
+
+# Vagrant folder
+.vagrant/*

@@ -14,6 +14,9 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade --all
 
+# To install binary content
+brew install caskroom/cask/brew-cask
+
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
@@ -31,22 +34,17 @@ brew install gnu-sed --with-default-names
 brew install bash
 brew tap homebrew/versions
 brew install bash-completion2
+# Install Zsh like an alternative to bash
+brew install zsh
 
 # Install `wget` with IRI support.
 brew install wget --with-iri
-
-# Install RingoJS and Narwhal.
-# Note that the order in which these are installed is important;
-# see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php55 --with-gmp
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -55,30 +53,66 @@ brew install sfnt2woff-zopfli
 brew install woff2
 
 # Install other useful binaries.
-brew install ack
-brew install exiv2
-brew install git
-brew install git-lfs
-brew install imagemagick --with-webp
-brew install lua
-brew install lynx
-brew install p7zip
-brew install pigz
-brew install pv
-brew install rename
-brew install rhino
-brew install speedtest_cli
-brew install ssh-copy-id
-brew install tree
-brew install webkit2png
-brew install zopfli
+brew install ack                # grep for source code
+brew install exiv2              # 
+brew install git                # A popular subversion system
+brew install git-extras         # Add some usefull command to git
+brew install git-lfs            # Manage large file with git
+brew install imagemagick --with-webp # Some image manipulation command tools
+brew install lua                # A script engine
+brew install lynx               # A cli web browser
+brew install p7zip              # 7-zip A file comression tool
+brew install pigz               # Another file compression tool
+brew install pv                 # monitor the progress of data through a pipe
+brew install rename             # A tool to rename multiple files
+brew install rhino              # A javascript engine
+brew install speedtest_cli      # A tool to make network speed test
+brew install ssh-copy-id        # Add a local ssh key to a remote host
+brew install tree               # List the content of a folder in a tree format
+brew install webkit2png         # Get a website and convert it into png
+brew install zopfli             # A google's compression tool
+git clone git@github.com:rupa/z.git ~/z-bin  # Jump in a recently used folder (cd)
 
 # Improve terminal
-brew cask install iterm2
-brew install zsh
+brew cask install iterm2        # A terminal application
+brew install tmux               # A Terminal multiplexer
 # Install oh my Zsh. It's recommanded but I don't want to force you
 # curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
-git clone git@github.com:rupa/z.git ~/z-bin
+
+
+# Web Developper tools
+brew install nodejs             # A very famous server side javascript engine
+brew install npm                # Node Package Manager
+
+brew install nvm                # Node Version Manager
+mkdir ~/.nvm
+cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+nvm install stable
+nvm use stable
+
+npm install -g bower            # A js front package manager
+npm install -g grunt            # A js preprocessor task manager
+npm install -g gulp             # Another js preprocessor task manager
+npm install -g forever          # Automaticly start/restart a nodejs server
+
+brew install homebrew/php/php56 --with-gmp    # php
+brew install composer           # Dependency handler for php project
+
+# Environment and Deployment
+brew cask install virtualbox    # Launch virtual machines
+brew cask install vagrant       # A virtual machine provisionner
+brew install ruby               # Ruby
+brew install brew-gem           # A package manager for ruby
+gem install bundler             # Dependency handler for ruby project (required for capistrano)
+sudo easy_install pip           # Python package manager
+sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible # automation tool
+
+
+# Multiplatform Mobile App
+npm install -g cordova          # Create multiplatform mobile app white webview
+npm install -g ionic            # A javascript framework for cordova
+brew install android-sdk        # Allow to compile for android
+
 
 
 # install outdated versions from the cellar.
