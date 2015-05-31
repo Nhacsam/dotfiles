@@ -87,14 +87,17 @@ brew install npm                # Node Package Manager
 brew install nvm                # Node Version Manager
 mkdir ~/.nvm
 cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
-nvm install stable
-nvm use stable
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+nvm install stable				# Install last stable version of node
+nvm use stable					# use it
 
 npm install -g bower            # A js front package manager
 npm install -g grunt            # A js preprocessor task manager
 npm install -g gulp             # Another js preprocessor task manager
 npm install -g forever          # Automaticly start/restart a nodejs server
 
+brew install bzip2
 brew install homebrew/php/php56 --with-gmp    # php
 brew install composer           # Dependency handler for php project
 
@@ -112,8 +115,8 @@ sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible #
 npm install -g cordova          # Create multiplatform mobile app white webview
 npm install -g ionic            # A javascript framework for cordova
 brew install android-sdk        # Allow to compile for android
-
-
+brew cask install java			# Java
+android &						# Open the android sdk installer window 
 
 # install outdated versions from the cellar.
 brew cleanup
