@@ -71,7 +71,7 @@ brew install ssh-copy-id        # Add a local ssh key to a remote host
 brew install tree               # List the content of a folder in a tree format
 brew install webkit2png         # Get a website and convert it into png
 brew install zopfli             # A google's compression tool
-git clone git@github.com:rupa/z.git ~/z-bin  # Jump in a recently used folder (cd)
+git clone https://github.com/rupa/z.git ~/z-bin  # Jump in a recently used folder (cd)
 
 # Improve terminal
 brew cask install iterm2        # A terminal application
