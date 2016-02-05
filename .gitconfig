@@ -1,18 +1,20 @@
 [alias]
-
-	# Sortcut	
+	
 	st  = status
-	co  = checkout
-	pur = pull --rebase
-	ci  = commit
+    co  = checkout
+    pur = pull --rebase
+    ci  = commit
 	cm  = commit -m
-	rc  = rebase --continue
-	lg  = log -M --decorate --graph
-	br  = branch
-	sth = stash
-	fu  = fetch upstream
-	cobra = !"git fetch upstream; git co upstream/develop; git co -b "
-	pr = pull-request
+    rc  = rebase --continue
+    lg  = log -M --decorate --graph
+    br  = branch
+    sth = stash
+    fu  = fetch upstream
+	fo  = fetch origin
+    tcm = commit -m
+    tadd = add
+    
+	cpr = pull-request
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -150,12 +152,13 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
-[push]
+[mergetool]
+	# Do not create .orig file on conflict
+	keepBackup = false
 
-	# Use the Git 1.x.x default to avoid errors on machines with old Git
-	# installations. To use `simple` instead, add this to your `~/.extra` file:
-	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = matching
+[push]
+	# `git push` will push only the current branch
+	default = current
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
@@ -180,3 +183,5 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[url "https://"]
+	insteadOf = git://
