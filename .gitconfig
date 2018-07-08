@@ -13,6 +13,9 @@
 	fo  = fetch origin
     tcm = commit -m
     tadd = add
+    tpush = push
+    tpull = pull
+    tst = status
     
 	cpr = pull-request
 
@@ -185,3 +188,6 @@
 	insteadOf = "gist:"
 [url "https://"]
 	insteadOf = git://
+[user]
+	name = Nicolas Djambazian
+	email = nicolas@djambazian.fr

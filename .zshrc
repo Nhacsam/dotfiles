@@ -1,11 +1,30 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/nicolasd/.oh-my-zsh
+export ZSH=/Users/nicolasdjambazian/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="nhacsam"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.vim_runtime/base-16/base16-shell"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] &&  eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+base16_monokai
+source ~/.vim_runtime/base-16/base16-fzf/bash/base16-monokai.config
+
+
+
+# base16_tomorrow-night
+# source ~/.vim_runtime/base-16/base16-fzf/bash/base16-tomorrow-night.config
+# base16_material-darker
+# source ~/.vim_runtime/base-16/base16-fzf/bash/base16-material-darker.config
+# base16_gruvbox-dark-hard
+# source ~/.vim_runtime/base-16/base16-fzf/bash/base16-gruvbox-dark-hard.config
+
+
+export IS_FONT_INSTALLED="true"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +68,7 @@ plugins=(git tmux node npm atom vagrant symfony2)
 
 # User configuration
 
-export PATH="/Users/nicolasd/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
+export PATH="/Users/nicolasdjambazian/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -93,3 +112,5 @@ export LANG=fr_FR.UTF-8
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
