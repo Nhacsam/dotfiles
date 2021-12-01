@@ -8,11 +8,11 @@ export ZSH=/Users/nicolasdjambazian/.oh-my-zsh
 ZSH_THEME="nhacsam"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.vim_runtime/base-16/base16-shell"
+BASE16_SHELL="$HOME/.vim_runtime/misc/base16-shell"
 [ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] &&  eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 base16_monokai
-source ~/.vim_runtime/base-16/base16-fzf/bash/base16-monokai.config
+source ~/.vim_runtime/misc/base16-fzf/bash/base16-monokai.config
 
 
 
@@ -64,11 +64,13 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux node npm atom vagrant symfony2)
+plugins=(git tmux node npm vagrant symfony2 tmuxinator)
 
 # User configuration
+export ANDROID_HOME=/Users/nicolasdjambazian/Library/Android/sdk
 
-export PATH="/Users/nicolasdjambazian/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
+export PATH="/Users/nicolasdjambazian/.composer/vendor/bin:/Users/nicolasdjambazian/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Users/nicolasdjambazian/Library/Python/3.6/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -80,8 +82,6 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-source ~/.z-bin/z.sh
 
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
@@ -112,5 +112,22 @@ export LANG=fr_FR.UTF-8
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+
+
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$PATH:$HOME/.sonar-scanner/bin"
+
+export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+
+# added by travis gem
+[ -f /Users/nicolasdjambazian/.travis/travis.sh ] && source /Users/nicolasdjambazian/.travis/travis.sh
+
+source ~/.git-subrepo/.rc
+. "/Users/nicolasdjambazian/.acme.sh/acme.sh.env"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
